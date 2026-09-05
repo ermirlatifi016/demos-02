@@ -4,25 +4,102 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Demonstration sites</title>
+<meta name="theme-color" content="#0B0B0F">
+<title>Titanix Tech — demonstration sites</title>
+<meta name="description" content="Sample websites built by Titanix Tech, each at its own address.">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=general-sans@500,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap">
 <style>
-  :root{color-scheme:light}
-  body{margin:0;min-height:100vh;display:grid;place-items:center;
-       background:#fafafa;color:#1a1d21;
-       font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
-  main{max-width:34rem;padding:2rem}
-  h1{font-size:1.35rem;margin:0 0 .75rem;font-weight:600}
-  p{margin:0 0 .75rem;color:#5b6470}
-  a{color:#1b4f8a}
+  :root{
+    color-scheme: dark;
+    --ink:#0B0B0F;          /* near black — the ground */
+    --fg:#FFFFFF;
+    --muted:#9CA3AF;
+    --accent:#7C3AED;       /* violet, 5-10% of the page and no more */
+    --hairline:#1C1C22;
+    --display:"General Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    --body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; min-height:100vh; min-height:100dvh;
+    display:grid; place-items:center;
+    background:var(--ink); color:var(--muted);
+    font-family:var(--body); font-size:15px; line-height:1.65;
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    position:relative; overflow-x:hidden;
+  }
+  /* The one glow. Geometric, single colour, far under 10% of the page. */
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none;
+    background:
+      radial-gradient(42rem 28rem at 18% 0%, rgba(124,58,237,.13), transparent 68%),
+      linear-gradient(transparent 0 calc(100% - 1px), var(--hairline) 100%) 0 0/100% 5.5rem,
+      linear-gradient(90deg, transparent 0 calc(100% - 1px), var(--hairline) 100%) 0 0/5.5rem 100%;
+    opacity:.55;
+    mask-image:radial-gradient(60rem 40rem at 22% 8%, #000 20%, transparent 78%);
+    -webkit-mask-image:radial-gradient(60rem 40rem at 22% 8%, #000 20%, transparent 78%);
+  }
+  main{position:relative; width:100%; max-width:40rem; padding:2.5rem 1.75rem}
+
+  .mark{display:flex; align-items:center; gap:.6rem; margin-bottom:2.75rem}
+  .mark svg{display:block; flex:none}
+  .mark .name{
+    font-family:var(--display); font-weight:700; font-size:.8rem;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--fg);
+  }
+  .mark .rule{flex:1; height:1px; background:var(--hairline)}
+
+  h1{
+    font-family:var(--display); font-weight:700;
+    font-size:clamp(1.6rem,1.15rem + 2.1vw,2.4rem); line-height:1.12;
+    letter-spacing:-.015em; color:var(--fg); margin:0 0 1.1rem;
+  }
+  p{margin:0 0 1rem; max-width:34rem}
+  .lede{color:#C7CBD3}
+
+  .contact{margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--hairline)}
+  .contact a{
+    font-family:var(--display); font-weight:500; font-size:.95rem;
+    color:var(--fg); text-decoration:none;
+    border-bottom:1px solid var(--accent); padding-bottom:2px;
+    transition:color .2s ease;
+  }
+  .contact a:hover{color:var(--accent)}
+  .contact a:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px}
+  .contact .where{display:block; margin-top:.85rem; font-size:.8rem; color:#6B7280}
+
+  @media (max-width:32rem){ main{padding:2rem 1.35rem} .mark{margin-bottom:2rem} }
+  @media (prefers-reduced-motion:reduce){ *{transition:none!important} }
 </style>
 </head>
 <body>
 <main>
+  <div class="mark">
+    <!-- A geometric mark, not a photograph: two offset planes and a violet node. -->
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+      <path d="M3 6.5 11 2l8 4.5v9L11 20l-8-4.5v-9Z" stroke="#FFFFFF" stroke-width="1.4"
+            stroke-linejoin="round" opacity=".9"/>
+      <path d="M11 2v9l8 4.5" stroke="#FFFFFF" stroke-width="1.4" stroke-linejoin="round"
+            opacity=".35"/>
+      <circle cx="11" cy="11" r="2.1" fill="#7C3AED"/>
+    </svg>
+    <span class="name">Titanix&nbsp;Tech</span>
+    <span class="rule"></span>
+  </div>
+
   <h1>Demonstration sites</h1>
-  <p>This directory holds sample websites generated for small businesses,
-     each at its own address. There is nothing to see at this root.</p>
+  <p class="lede">Sample websites built for small businesses, each one live at its own
+     address. There is nothing to see at this root.</p>
   <p>If you were sent a link, open that link directly.</p>
-  <p><a href="mailto:tools@titanixtech.com">tools@titanixtech.com</a></p>
+
+  <div class="contact">
+    <a href="mailto:tools@titanixtech.com">tools@titanixtech.com</a>
+    <span class="where">Titanix Tech — web, mobile and enterprise builds.</span>
+  </div>
 </main>
 </body>
 </html>
